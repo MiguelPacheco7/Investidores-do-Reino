@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  background-color: #f8fafc;
+}
+.floating-header {
+  position: sticky;
+  top: 1rem;
+  width: 95%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  border-radius: 1rem;
+  z-index: 100;
+  transition: top 0.3s ease-in-out;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+.gradient-bg {
+  background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 100%);
+}
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  color: #374151;
+}
+.form-input::placeholder {
+  color: #9ca3af;
+}
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+}
+/* Classe para forçar o aspect ratio de 16:9 */
+.aspect-video-16-9 {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+.aspect-video-16-9 img,
+.aspect-video-16-9 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animação para o botão do WhatsApp */
+.whatsapp-button {
+  animation: float-in 0.8s ease-out forwards;
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
