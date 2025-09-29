@@ -31,7 +31,8 @@ function animateCounter(element, target) {
         element.textContent = "150mil";
         clearInterval(counter);
       } else {
-        element.textContent = Math.floor(start).toLocaleString('pt-BR');
+        // CORRIGIDO: Remove toLocaleString durante a contagem para evitar reflow do ponto de milhar
+        element.textContent = Math.floor(start); 
       }
     } else {
       // Para os outros números (+45, +50, 600)
