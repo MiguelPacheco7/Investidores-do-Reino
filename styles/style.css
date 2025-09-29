@@ -61,6 +61,18 @@ body {
   object-fit: cover;
 }
 
+/* Estilos para a animação de revelação ao rolar */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Animação para o botão do WhatsApp */
 .whatsapp-button {
   animation: float-in 0.8s ease-out forwards;

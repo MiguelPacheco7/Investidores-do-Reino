@@ -11,12 +11,17 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-// Atualização automática do ano no rodapé
+// Atualização automática do ano no rodapé (esta lógica não precisa do DOMContentLoaded)
 document.getElementById("copyright-year").textContent =
   new Date().getFullYear();
 
-// Lógica para carregar estados e cidades do Brasil (API do IBGE)
+// ------------------------------------------------------------------
+// Lógica Principal: Envolve tudo que depende da estrutura do HTML
+// ------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
+  // ==========================================================
+  // 1. Lógica para carregar estados e cidades do Brasil (API do IBGE)
+  // ==========================================================
   const estadoSelect = document.getElementById("estado");
   const cidadeSelect = document.getElementById("cidade");
 
@@ -58,5 +63,32 @@ document.addEventListener("DOMContentLoaded", () => {
           cidadeSelect.disabled = false;
         });
     }
+  });
+
+  // ==========================================================
+  // 2. Lógica para animação de revelação ao rolar (Scroll Reveal)
+  // ==========================================================
+  const revealElements = document.querySelectorAll(".scroll-reveal");
+
+  const observerOptions = {
+    root: null, // observa em relação à viewport
+    rootMargin: "0px",
+    threshold: 0.1, // aciona quando 10% do elemento estiver visível
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      // Se o elemento está visível
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        // Opcional: para de observar o elemento depois que ele já foi animado
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Inicia a observação de todos os elementos marcados
+  revealElements.forEach((el) => {
+    observer.observe(el);
   });
 });
