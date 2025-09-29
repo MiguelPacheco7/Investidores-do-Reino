@@ -75,7 +75,7 @@ body {
 
 /* Animação para o botão do WhatsApp */
 .whatsapp-button {
-  animation: float-in 0.8s ease-out forwards;
+  animation: float-in 1.0s ease-out forwards;
 }
 
 @keyframes float-in {
