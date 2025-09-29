@@ -88,3 +88,22 @@ body {
     transform: translateY(0);
   }
 }
+
+/* NOVO ESTILO: Garante que os números não mudem de largura */
+.counter {
+  display: inline-block; /* Permite que a largura seja definida */
+  /* Defina uma largura fixa que seja suficiente para o maior número (150mil ou 600) */
+  /* Ex: A largura de '150mil' deve ser o suficiente para todos */
+  min-width: 80px; /* Ajuste este valor se for necessário, 80px deve ser o suficiente na maioria das telas */
+}
+
+/* Opcional, para garantir o alinhamento dentro do min-width */
+.counter {
+  text-align: center;
+}
+
+.counter {
+  display: inline-block;
+  min-width: 80px; /* Largura mínima para evitar o 'tremor' */
+  text-align: center;
+}
