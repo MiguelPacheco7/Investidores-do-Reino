@@ -72,32 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-  // Carregar cidades quando um estado é selecionado
-  estadoSelect.addEventListener("change", () => {
-    const uf = estadoSelect.value;
-    cidadeSelect.innerHTML =
-      '<option value="" disabled selected>Carregando cidades...</option>';
-    cidadeSelect.disabled = true;
-
-    if (uf) {
-      fetch(
-        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios?orderBy=nome`
-      )
-        .then((res) => res.json())
-        .then((cidades) => {
-          cidadeSelect.innerHTML =
-            '<option value="" disabled selected>Selecione sua cidade</option>';
-          cidades.forEach((cidade) => {
-            const option = document.createElement("option");
-            option.value = cidade.nome;
-            option.textContent = cidade.nome;
-            cidadeSelect.appendChild(option);
-          });
-          cidadeSelect.disabled = false;
-        });
-    }
-  });
-
   // ==========================================================
   // 2. Lógica para animação de revelação ao rolar (Scroll Reveal E Contador)
   // ==========================================================
