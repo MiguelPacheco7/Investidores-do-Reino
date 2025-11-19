@@ -9,6 +9,7 @@ body {
   overflow-x: hidden;
   background-color: #f8fafc;
 }
+
 .floating-header {
   position: sticky;
   top: 1rem;
@@ -23,9 +24,48 @@ body {
   transition: top 0.3s ease-in-out;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
+
+@media (min-width: 768px) {
+
+  /* 3. O Gradiente de Fusão */
+  .hero-desktop-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ocupa toda a largura do container da imagem (50% da tela) */
+    height: 100%;
+    /* Começa da cor do fundo (esquerda) e vai ficando transparente para a direita */
+    background: linear-gradient(90deg, #f8fafc 5%, rgba(248, 250, 252, 0.8) 30%, transparent 100%);
+    z-index: 1;
+    /* Fica por cima da foto */
+    pointer-events: none;
+  }
+
+  /* Garante que o texto não invada a área da foto */
+  .hero-text-area {
+    width: 50%;
+    /* Ocupa a metade esquerda */
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-mobile-img {
+    display: none;
+  }
+
+  .img-sec-1 {
+    margin-top: -40px;
+    height: 500px;
+    width: 700px;
+
+  }
+}
+
 .gradient-bg {
   background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 100%);
 }
+
 .form-input,
 .form-select {
   width: 100%;
@@ -35,22 +75,27 @@ body {
   border-radius: 0.5rem;
   color: #374151;
 }
+
 .form-input::placeholder {
   color: #9ca3af;
 }
+
 .form-input:focus,
 .form-select:focus {
   outline: none;
   border-color: #3b82f6;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
 }
+
 /* Classe para forçar o aspect ratio de 16:9 */
 .aspect-video-16-9 {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%;
+  /* 16:9 */
   height: 0;
   overflow: hidden;
 }
+
 .aspect-video-16-9 img,
 .aspect-video-16-9 iframe {
   position: absolute;
@@ -83,6 +128,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -92,9 +138,11 @@ body {
 /* CORREÇÃO DO BUG DE TREMOR: Força estabilidade durante a contagem */
 .counter {
   display: inline-block;
-  min-width: 100px; /* Garante largura suficiente para "150mil" */
+  min-width: 100px;
+  /* Garante largura suficiente para "150mil" */
   text-align: center;
-  white-space: nowrap; /* Impede quebra de linha */
+  white-space: nowrap;
+  /* Impede quebra de linha */
   /* ESSENCIAL: Garante que todos os dígitos (0-9) tenham a mesma largura */
   font-variant-numeric: tabular-nums;
 }
