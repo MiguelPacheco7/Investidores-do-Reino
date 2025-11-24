@@ -64,7 +64,6 @@ body {
   #first-sec {
     margin-left: 65px;
   }
-
   .video1 {
     margin-left: 208px;
     height: 384px;
@@ -75,6 +74,19 @@ body {
     margin-left: 144px;
     height: 384px;
     width: 208px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video1 {
+    margin-left: 80px;
+    width: 208px;
+    height: 384px;
+  }
+  .video2 {
+    margin-left: 80px;
+    width: 208px;
+    height: 384px;
   }
 }
 
