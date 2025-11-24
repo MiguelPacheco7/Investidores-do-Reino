@@ -19,27 +19,43 @@ body {
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
+/* --- REGRAS DESKTOP (PC) --- */
 @media (min-width: 768px) {
+  
+  /* Container da imagem do Hero */
+  .hero-desktop-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 0;
+  }
 
-  /* 3. O Gradiente de Fusão */
+  /* A imagem do Hero */
+  .hero-desktop-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+  }
+
+  /* Gradiente de Fusão */
   .hero-desktop-gradient {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    /* Ocupa toda a largura do container da imagem (50% da tela) */
     height: 100%;
-    /* Começa da cor do fundo (esquerda) e vai ficando transparente para a direita */
     background: linear-gradient(90deg, #f8fafc 5%, rgba(248, 250, 252, 0.8) 30%, transparent 100%);
     z-index: 1;
-    /* Fica por cima da foto */
     pointer-events: none;
   }
 
-  /* Garante que o texto não invada a área da foto */
+  /* Área de texto */
   .hero-text-area {
     width: 50%;
-    /* Ocupa a metade esquerda */
     position: relative;
     z-index: 10;
   }
@@ -52,34 +68,44 @@ body {
     margin-top: -40px;
     height: 500px;
     width: 700px;
-
   }
-
+  
   .video1 {
-    margin-left: 208px;
+    margin-left: auto; /* Corrigido para centralizar */
+    margin-right: auto;
     height: 384px;
     width: 208px;
+    display: block;
   }
 
   .video2 {
-    margin-left: 144px;
+    margin-left: auto; /* Corrigido para centralizar */
+    margin-right: auto;
     height: 384px;
     width: 208px;
+    display: block;
   }
 }
 
+/* --- REGRAS MOBILE (Celular) --- */
 @media (max-width: 768px) {
   .video1 {
-    margin-left: 80px;
+    margin-left: auto;
+    margin-right: auto;
     width: 208px;
     height: 384px;
+    display: block;
   }
   .video2 {
-    margin-left: 80px;
+    margin-left: auto;
+    margin-right: auto;
     width: 208px;
     height: 384px;
+    display: block;
   }
 }
+
+/* --- OUTROS ESTILOS GERAIS --- */
 
 .gradient-bg {
   background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 100%);
@@ -106,11 +132,9 @@ body {
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
 }
 
-/* Classe para forçar o aspect ratio de 16:9 */
 .aspect-video-16-9 {
   position: relative;
   padding-bottom: 56.25%;
-  /* 16:9 */
   height: 0;
   overflow: hidden;
 }
@@ -125,7 +149,6 @@ body {
   object-fit: cover;
 }
 
-/* Estilos para a animação de revelação ao rolar */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(50px);
@@ -137,7 +160,6 @@ body {
   transform: translateY(0);
 }
 
-/* Animação para o botão do WhatsApp */
 .whatsapp-button {
   animation: float-in 1.0s ease-out forwards;
 }
@@ -154,14 +176,10 @@ body {
   }
 }
 
-/* CORREÇÃO DO BUG DE TREMOR: Força estabilidade durante a contagem */
 .counter {
   display: inline-block;
   min-width: 100px;
-  /* Garante largura suficiente para "150mil" */
   text-align: center;
   white-space: nowrap;
-  /* Impede quebra de linha */
-  /* ESSENCIAL: Garante que todos os dígitos (0-9) tenham a mesma largura */
   font-variant-numeric: tabular-nums;
 }
