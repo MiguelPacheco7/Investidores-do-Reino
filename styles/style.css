@@ -60,6 +60,22 @@ body {
     width: 700px;
 
   }
+
+  #first-sec {
+    margin-left: 65px;
+  }
+
+  .video1 {
+    margin-left: 224px;
+    height: 384px;
+    width: 208px;
+  }
+
+  .video2 {
+    margin-left: 144px;
+    height: 384px;
+    width: 208px;
+  }
 }
 
 .gradient-bg {
