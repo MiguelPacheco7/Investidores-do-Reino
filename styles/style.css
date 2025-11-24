@@ -19,6 +19,10 @@ body {
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
+#sec-2, #numeros, #sec-4, #sec-5 {
+  z-index: 100;
+}
+
 /* --- REGRAS DESKTOP (PC) --- */
 @media (min-width: 768px) {
   
@@ -84,6 +88,12 @@ body {
     height: 384px;
     width: 208px;
     display: block;
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero-desktop-gradient {
+    height: 70%;
   }
 }
 
