@@ -29,8 +29,42 @@
     </header>
 
     <main>
+        <!-- SECTION 1 (DESKTOP) - REVISADA -->
+        <section id="sec-1" class="desktop-only relative w-full h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-[#f8fafc]">
+            
+            <!-- Imagem/Logo posicionada à DIREITA -->
+            <!-- MUDANÇAS:
+                 1. w-[50%]: Largura reduzida para 50% para empurrar a imagem bem para a direita.
+                 2. object-contain: A imagem NUNCA será cortada, ela vai caber inteira na altura disponível.
+                 3. object-right: Alinha a imagem à direita dentro da caixa de 50%.
+            -->
+            <div class="absolute top-0 right-0 h-full w-[50%] z-0">
+                <img src="/Assets/photos/IMG_9949.PNG" alt="Destaque Hero" class="w-full h-full object-contain object-right">
+                
+                <!-- Gradiente de fusão -->
+                <div class="absolute inset-0 bg-gradient-to-r from-[#f8fafc] via-[#f8fafc]/10 to-transparent"></div>
+            </div>
+
+            <!-- Conteúdo de Texto (Esquerda) -->
+            <div class="relative z-10 container mx-auto px-6">
+                <div class="max-w-2xl lg:pl-10">
+                    <h1 class="font-serif-display text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 leading-tight mb-5 tracking-wide">
+                        ATIVOS NA<br>PALAVRA
+                    </h1>
+                    
+                    <p class="text-base md:text-lg text-gray-600 mb-8 leading-relaxed border-l-4 border-blue-600 pl-4">
+                        Junte-se a nós em uma jornada de fé, obediência e propósito, servindo ao Reino com dedicação e simplicidade.
+                    </p>
+
+                    <a href="#contato"
+                        class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-base hover:bg-blue-700 transition-all duration-300 uppercase tracking-wider shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        Participe
+                    </a>
+                </div>
+            </div>
+        </section>
         <section
-            class="mx-auto md:mx-0 md:px-0 md:py-16 px-6 py-16 flex flex-col md:flex-row items-center justify-center">
+            class="mobile-only mx-auto md:mx-0 md:px-0 md:py-16 px-6 py-16 flex flex-col md:flex-row items-center justify-center">
             <div class="md:ml-[65px] mt-12 hero-text-area flex-1 text-center md:text-left md:pr-10 lg:pl-10">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-blue-900 leading-tight mb-4">
                     ATIVOS NA PALAVRA,<br>ATIVOS NAS OFERTAS

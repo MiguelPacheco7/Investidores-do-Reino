@@ -1,3 +1,21 @@
+.mobile-only {
+    display: none;
+}
+
+/* QUANDO A TELA FOR DE ATÉ 1023px DE LARGURA (COBRINDO CELULARES E TABLETS NA VERTICAL),
+  ESCONDE A SEÇÃO DE DESKTOP E MOSTRA A DE CELULAR. 
+*/
+@media (max-width: 1023px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+        /* Ou flex, grid, etc., conforme a necessidade */
+    }
+}
+
 body {
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
@@ -71,7 +89,7 @@ body {
   .img-sec-1 {
     margin-top: -40px;
     height: 500px;
-    width: 700px;
+    width: 1000px;
   }
   
   .video1 {
