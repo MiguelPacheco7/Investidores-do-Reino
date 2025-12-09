@@ -53,26 +53,6 @@ function animateCounter(element, target) {
 // ------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   // ==========================================================
-  // 1. Lógica para carregar estados e cidades do Brasil (API do IBGE)
-  // ==========================================================
-  const estadoSelect = document.getElementById("estado");
-  const cidadeSelect = document.getElementById("cidade");
-
-  // Carregar estados
-  fetch(
-    "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
-  )
-    .then((res) => res.json())
-    .then((estados) => {
-      estados.forEach((estado) => {
-        const option = document.createElement("option");
-        option.value = estado.sigla;
-        option.textContent = estado.nome;
-        estadoSelect.appendChild(option);
-      });
-    });
-
-  // ==========================================================
   // 2. Lógica para animação de revelação ao rolar (Scroll Reveal E Contador)
   // ==========================================================
   const revealElements = document.querySelectorAll(".scroll-reveal");
