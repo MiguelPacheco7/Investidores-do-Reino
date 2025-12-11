@@ -47,14 +47,11 @@ function animateCounter(element, target) {
   }, 10);
 }
 
-
 // ------------------------------------------------------------------
 // Lógica Principal: Envolve tudo que depende da estrutura do HTML
-// ------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-  // ==========================================================
-  // 2. Lógica para animação de revelação ao rolar (Scroll Reveal E Contador)
-  // ==========================================================
+  
+  // Lógica para animação de revelação ao rolar (Scroll Reveal E Contador)
   const revealElements = document.querySelectorAll(".scroll-reveal");
   const counterElements = document.querySelectorAll(".counter"); // Seleciona elementos com a classe 'counter'
   let countersAnimated = false; // Flag para garantir que a animação só ocorra uma vez
@@ -78,9 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // -----------------------------------
       // Lógica do Contador Animado
-      // -----------------------------------
       // Verifica se a seção 'numeros' (ou seja, o 'entry' atual) está visível
       // E se o contador ainda não foi ativado (usando a flag)
       if (entry.target.id === 'numeros' && entry.isIntersecting && !countersAnimated) {
