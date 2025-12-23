@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Styles/style.css?v=3">
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="icon" type="image/png" href="/Assets/photos/fundo investidor.png">
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>Investidores do Reino</title>
@@ -31,7 +31,7 @@
     <main>
         <!-- SECTION 1 (DESKTOP) - REVISADA -->
         <section id="sec-1"
-            class="hidden lg:flex relative w-full h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-[#f8fafc]">
+            class="hidden lg:flex relative w-full h-[85vh] min-h-[600px] flex items-center overflow-hidden">
 
             <!-- Imagem/Logo posicionada à DIREITA -->
             <!-- MUDANÇAS:
@@ -41,9 +41,6 @@
             -->
             <div class="absolute top-0 right-0 h-full w-[50%] z-0">
                 <img src="Assets/photos/fundo investidor.png" class="ml-20 w-full h-full object-contain object-right">
-
-                <!-- Gradiente de fusão -->
-                <div class="absolute inset-0 bg-gradient-to-r from-[#f8fafc] via-[#f8fafc]/10 to-transparent"></div>
             </div>
 
             <!-- Conteúdo de Texto (Esquerda) -->
@@ -91,21 +88,24 @@
         <section id="sec-2" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-6 items-center">
                 <div class="text-center lg:pl-10 mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-2">O QUE É O INVESTIDORES DO REINO?</h2>
-                    <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-4">Ser ativos na palavra e ativo nas
-                        ofertas é investir no reino!</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
+                        O QUE É O <i>INVESTIDORES DO REINO?</i></h2>
+                    <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-4">
+                        Ser ativo na Palavra e comprometido nas ofertas é investir no Reino!
+                    </h3>
                 </div>
                 <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-1/2 lg:pl-10">
-                        <p class="text-gray-600 leading-relaxed">
+                    <div class="lg:w-1/2 lg:pl-10 md:mt-12">
+                        <p class="text-gray-600 leading-relaxed mb-2">
                             Investidores do Reino é um programa de ofertas recorrentes dedicado à Obra do Senhor,
-                            composto
-                            por irmãos e irmãs que compartilham o objetivo de preparar o caminho para o retorno do
-                            Senhor.
-                            Ofertar é uma bênção para a família e uma maneira de cooperar com o avanço do evangelho,
-                            trazendo equilíbrio e guardando nossos corações. Acreditamos que ofertar com propósito é um
-                            chamado para todos, e não uma responsabilidade de poucos. Investir no Reino nos aproxima da
-                            Palavra e nos transforma em servos úteis.
+                            composto por irmãos e irmãs que compartilham o propósito de preparar o caminho para o
+                            retorno de Cristo. Ofertar é uma bênção para a família e uma forma de cooperar com o avanço
+                            do evangelho, trazendo equilíbrio e guardando nossos corações.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Acreditamos que ofertar com propósito, uma visão, é um chamado para todos, e não uma
+                            responsabilidade de poucos. Investir no Reino nos aproxima da Palavra e nos transforma em
+                            servos úteis.
                         </p>
                     </div>
                     <div class="lg:w-1/2 mt-8 lg:mt-0">
@@ -122,11 +122,15 @@
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Mudança real, impacto verdadeiro</h2>
+                    <p class="text-gray-600 leading-relaxed mb-2">
+                        Veja o impacto dessa obra na vida das pessoas — a transformação gerada pelos <br>
+                        <i>Investidores do
+                            Reino</i> na vida daqueles que são alcançados por nosso propósito. Cada contribuição
+                        fortalece esse
+                        movimento, levando esperança e novas oportunidades a quem mais precisa.
+                    </p>
                     <p class="text-gray-600 leading-relaxed mb-12">
-                        Veja o impacto dessa obra na vida das pessoas, a transformação gerada pelos Investidores do
-                        Reino na vida das pessoas que são alcançadas por nosso propósito. Cada contribuição fortalece
-                        esse movimento, levando esperança e novas oportunidades a quem mais precisa. Junte-se a nós
-                        nessa missão e seja parte dessa mudança!
+                        Junte-se a nós nessa missão e seja parte dessa mudança!
                     </p>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -154,7 +158,7 @@
             </div>
         </section>
 
-        <section id="sec-4" class="py-16 md:py-24 bg-white">
+        <section id="sec-4" class="py-16 md:py-24 bg-white overflow-hidden">
             <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Investindo no que realmente importa
@@ -162,27 +166,59 @@
                     <p class="text-gray-600 leading-relaxed">
                         Os Investidores do Reino são uma comunidade dedicada a apoiar a propagação do evangelho,
                         sustentando missionários e casas de cuidado ao redor do mundo.
-                        <br><br>
-                        Com essa missão, levamos a palavra de Deus a quem mais precisa, espalhando esperança e criando
-                        novas oportunidades para transformar vidas.
                     </p>
                 </div>
-                <div class="lg:w-1/2 mt-8 lg:mt-0">
+
+                <div class="lg:w-1/2 mt-8 lg:mt-0 w-full relative">
                     <div class="hidden lg:relative lg:h-96 lg:flex lg:justify-center lg:items-center">
-                        <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.31 (2).jpeg" alt="Foto 1"
-                            class="rounded-2xl shadow-lg absolute w-48 z-10 top-0 left-4 transform -rotate-6 transition-transform hover:scale-110 hover:rotate-0 hover:z-30">
-                        <img src="/Assets/photos/76499bc7-07af-418a-b9f1-fd4f6ecd4c32.jpg" alt="Foto 2"
-                            class="rounded-2xl shadow-lg absolute w-56 z-20 transition-transform hover:scale-110 hover:z-30">
-                        <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.32 (3).jpeg" alt="Foto 3"
-                            class="rounded-2xl shadow-lg absolute w-48 z-10 bottom-0 right-4 transform rotate-6 transition-transform hover:scale-110 hover:rotate-0 hover:z-30">
+                        <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.31 (2).jpeg"
+                            class="rounded-2xl shadow-lg absolute w-48 z-10 top-0 left-4 transform -rotate-6">
+                        <img src="/Assets/photos/76499bc7-07af-418a-b9f1-fd4f6ecd4c32.jpg"
+                            class="rounded-2xl shadow-lg absolute w-56 z-20">
+                        <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.32 (3).jpeg"
+                            class="rounded-2xl shadow-lg absolute w-48 z-10 bottom-0 right-4 transform rotate-6">
                     </div>
-                    <div class="lg:hidden flex flex-col gap-8 items-center">
-                        <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.31 (2).jpeg" alt="Foto 1"
-                            class="rounded-2xl shadow-lg w-3/4 max-w-xs">
-                        <img src="/Assets/photos/76499bc7-07af-418a-b9f1-fd4f6ecd4c32.jpg" alt="Foto 2"
-                            class="rounded-2xl shadow-lg w-3/4 max-w-xs">
-                        <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.32 (3).jpeg" alt="Foto 3"
-                            class="rounded-2xl shadow-lg w-3/4 max-w-xs">
+
+                    <div class="lg:hidden relative group py-4" id="carousel-wrapper-sec4">
+
+                        <button id="carousel-prev"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 text-blue-900 p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                            aria-label="Anterior">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <div id="carousel-track"
+                            class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-4 no-scrollbar touch-pan-x">
+
+                            <div class="min-w-[85%] sm:min-w-[300px] shrink-0 snap-center carousel-item">
+                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100 h-full">
+                                    <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.31 (2).jpeg"
+                                        class="rounded-xl h-64 w-full object-cover pointer-events-none select-none">
+                                </div>
+                            </div>
+
+                            <div class="min-w-[85%] sm:min-w-[300px] shrink-0 snap-center carousel-item">
+                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100 h-full">
+                                    <img src="/Assets/photos/76499bc7-07af-418a-b9f1-fd4f6ecd4c32.jpg"
+                                        class="rounded-xl h-64 w-full object-cover pointer-events-none select-none">
+                                </div>
+                            </div>
+
+                            <div class="min-w-[85%] sm:min-w-[300px] shrink-0 snap-center carousel-item">
+                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100 h-full">
+                                    <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.32 (3).jpeg"
+                                        class="rounded-xl h-64 w-full object-cover pointer-events-none select-none">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button id="carousel-next"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 text-blue-900 p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                            aria-label="Próximo">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -215,15 +251,16 @@
     <footer id="contato" class="bg-blue-900 text-white pt-16 pb-8">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold mb-2">DESEJA PARTICIPAR? ENTRE EM CONTATO CONOSCO!</h2>
+                <h2 class="text-2xl md:text-3xl font-bold mb-10">DESEJA PARTICIPAR? ENTRE EM CONTATO CONOSCO!</h2>
             </div>
 
             <div class="max-w-4xl mx-auto mb-16">
                 <div class="text-center">
-                    <button type="submit"
-                        class="bg-blue-600 text-white font-bold py-3 px-12 rounded-lg text-lg hover:bg-blue-700 transition-colors w-full md:w-auto">
+                    <a type="submit"
+                        href="https://wa.me/553182803364?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Investidores%20do%20Reino%20e%20Microinvestidor%20do%20Reino."
+                        class="bg-blue-600 text-white font-bold py-3 px-5 rounded-lg text-lg hover:bg-blue-700 transition-colors w-full md:w-auto">
                         SEJA UM INVESTIDOR DO REINO
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -231,7 +268,8 @@
                 class="border-t border-blue-800 pr-10 pt-8 flex flex-col md:flex-row justify-between items-center text-center">
                 <div class="flex gap-6 mb-4 md:mb-0 ">
                     <a href="/" class="hover:text-blue-300">HOME</a>
-                    <a href="#principios" class="hover:text-blue-300">SAIBA MAIS</a>
+                    <a href="https://wa.me/553182803364?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Investidores%20do%20Reino%20e%20Microinvestidor%20do%20Reino."
+                        class="hover:text-blue-300">SAIBA MAIS</a>
                     <a href="#" target="_blank" class="hover:text-blue-300">INSTAGRAM</a>
                 </div>
                 <p class="text-blue-300">&copy; <span id="copyright-year"></span>. Investidores do Reino.</p>
@@ -239,7 +277,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5531123456789?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Investidores%20do%20Reino."
+    <a href="https://wa.me/553182803364?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Investidores%20do%20Reino%20e%20Microinvestidor%20do%20Reino."
         target="_blank"
         class="whatsapp-button fixed bottom-6 right-6 flex items-center justify-center w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-transform duration-300 z-50"
         aria-label="Fale conosco pelo WhatsApp">

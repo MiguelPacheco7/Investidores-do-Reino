@@ -193,3 +193,32 @@ body {
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+
+/* --- CARROSSEL INFINITO --- */
+
+/* Oculta barra de rolagem */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Garante a suavidade nativa */
+#carousel-track {
+    scroll-behavior: smooth;
+}
+
+/* Classe utilitária para quando precisarmos 'teletransportar' o scroll sem animação */
+.disable-scroll-behavior {
+    scroll-behavior: auto !important;
+}
+
+/* Ajuste das setas no mobile */
+@media (max-width: 768px) {
+    #carousel-prev, #carousel-next {
+        opacity: 0.8 !important;
+        padding: 0.8rem; /* Botões um pouco maiores para o dedo */
+    }
+}
