@@ -78,7 +78,6 @@
                     Participe
                 </a>
             </div>
-            <div class="hero-desktop-gradient"></div>
             <div class="flex-1 mt-12 px-4 md:px-0 md:mt-0 flex">
                 <img src="/Assets/photos/IMG_2439.JPG" alt="Placeholder de imagem"
                     class="img-sec-1 rounded-2xl shadow-2xl z-0">
@@ -179,70 +178,94 @@
                             class="rounded-2xl shadow-lg absolute w-48 z-10 bottom-0 right-4 transform rotate-6">
                     </div>
 
-                    <div class="lg:hidden relative group py-4" id="carousel-wrapper-sec4">
-
-                        <button id="carousel-prev"
-                            class="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 text-blue-900 p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
-                            aria-label="Anterior">
-                            <i class="fa-solid fa-chevron-left"></i>
-                        </button>
-
-                        <div id="carousel-track"
-                            class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-4 no-scrollbar touch-pan-x">
-
-                            <div class="min-w-[85%] sm:min-w-[300px] shrink-0 snap-center carousel-item">
-                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100 h-full">
+                    <div class="lg:hidden overflow-hidden" id="carousel-wrapper-sec4">
+                        <div id="carousel-sec4" class="flex gap-4 cursor-grab active:cursor-grabbing">
+                            <div class="min-w-[80%] sm:min-w-[300px] shrink-0">
+                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100">
                                     <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.31 (2).jpeg"
-                                        class="rounded-xl h-64 w-full object-cover pointer-events-none select-none">
+                                        class="rounded-xl h-64 w-full object-cover pointer-events-none">
                                 </div>
                             </div>
-
-                            <div class="min-w-[85%] sm:min-w-[300px] shrink-0 snap-center carousel-item">
-                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100 h-full">
+                            <div class="min-w-[80%] sm:min-w-[300px] shrink-0">
+                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100">
                                     <img src="/Assets/photos/76499bc7-07af-418a-b9f1-fd4f6ecd4c32.jpg"
-                                        class="rounded-xl h-64 w-full object-cover pointer-events-none select-none">
+                                        class="rounded-xl h-64 w-full object-cover pointer-events-none">
                                 </div>
                             </div>
-
-                            <div class="min-w-[85%] sm:min-w-[300px] shrink-0 snap-center carousel-item">
-                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100 h-full">
+                            <div class="min-w-[80%] sm:min-w-[300px] shrink-0">
+                                <div class="bg-white p-2 rounded-2xl shadow-xl border border-gray-100">
                                     <img src="/Assets/photos/WhatsApp Image 2025-02-19 at 10.48.32 (3).jpeg"
-                                        class="rounded-xl h-64 w-full object-cover pointer-events-none select-none">
+                                        class="rounded-xl h-64 w-full object-cover pointer-events-none">
                                 </div>
                             </div>
-
                         </div>
-
-                        <button id="carousel-next"
-                            class="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 text-blue-900 p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
-                            aria-label="Próximo">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </button>
-
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="sec-5" class="py-16 md:py-24 bg-gray-900 text-white">
+        <section id="sec-5" class="py-12 md:py-16 bg-gray-900 text-white">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12">Veja os testemunhos dessa obra:</h2>
-                <div class="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
-                    <div
-                        class="video1 md:ml-[208px] md:w-52 bg-black rounded-2xl shadow-lg overflow-hidden flex justify-center items-center">
-                        <video class="h-96 w-52 max-w-full" controls playsinline preload="auto">
-                            <source src="/Assets/photos/testemunho-final.mp4" type="video/mp4">
-                            Seu navegador não suporta este vídeo.
-                        </video>
+                <div class="carousel-3d-container">
+                    <div class="carousel-3d">
+                        <div class="carousel-3d-track">
+                            <div class="carousel-3d-slide">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/wpIzMGRICow?si=tsYEpercgeIHH9_F"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="carousel-3d-slide">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/Z4m01uqzKXw?si=2WTp3kKWKiIU-mVz"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="carousel-3d-slide">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/cV8lIrwMmQM?si=7cVWOrIDHE0qItV_"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="carousel-3d-slide">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/Koxao69V2BE?si=ho5XNaayayNXbqjO"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="carousel-3d-slide">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/TF0BeZg0jCU?si=mWrnouovZ4GUAIWu"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div
-                        class="video2 md:ml-[144px] md:w-52 bg-black rounded-2xl shadow-lg overflow-hidden flex justify-center items-center">
-                        <video class="h-96 w-52 max-w-full" controls playsinline preload="auto">
-                            <source src="/Assets/photos/testemunho.mp4" type="video/mp4">
-                            Seu navegador não suporta este vídeo.
-                        </video>
-                    </div>
+                    <button id="prev-btn" class="carousel-nav-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button id="next-btn" class="carousel-nav-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
+            </div>
             </div>
         </section>
 

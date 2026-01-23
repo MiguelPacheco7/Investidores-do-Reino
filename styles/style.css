@@ -2,6 +2,18 @@ body {
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
   background-color: #f8fafc;
+  width: 100%;
+  position: relative;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#sec-5 {
+  overflow: hidden;
+  width: 100%;
 }
 
 .floating-header {
@@ -19,13 +31,16 @@ body {
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
-#sec-2, #numeros, #sec-4, #sec-5 {
+#sec-2,
+#numeros,
+#sec-4,
+#sec-5 {
   z-index: 100;
 }
 
 /* --- REGRAS DESKTOP (PC) --- */
 @media (min-width: 768px) {
-  
+
   /* Container da imagem do Hero */
   .hero-desktop-container {
     position: absolute;
@@ -73,45 +88,11 @@ body {
     height: 500px;
     width: 1000px;
   }
-  
-  .video1 {
-    margin-left: auto; /* Corrigido para centralizar */
-    margin-right: auto;
-    height: 384px;
-    width: 208px;
-    display: block;
-  }
-
-  .video2 {
-    margin-left: auto; /* Corrigido para centralizar */
-    margin-right: auto;
-    height: 384px;
-    width: 208px;
-    display: block;
-  }
 }
 
 @media (min-width: 1400px) {
   .hero-desktop-gradient {
     height: 70%;
-  }
-}
-
-/* --- REGRAS MOBILE (Celular) --- */
-@media (max-width: 768px) {
-  .video1 {
-    margin-left: auto;
-    margin-right: auto;
-    width: 208px;
-    height: 384px;
-    display: block;
-  }
-  .video2 {
-    margin-left: auto;
-    margin-right: auto;
-    width: 208px;
-    height: 384px;
-    display: block;
   }
 }
 
@@ -140,23 +121,6 @@ body {
   outline: none;
   border-color: #3b82f6;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
-}
-
-.aspect-video-16-9 {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-}
-
-.aspect-video-16-9 img,
-.aspect-video-16-9 iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .scroll-reveal {
@@ -194,31 +158,162 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* --- CARROSSEL INFINITO --- */
-
-/* Oculta barra de rolagem */
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+/* Carrossel Sec-4 Mobile Ajustado */
+#carousel-wrapper-sec4 {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
 }
 
-/* Garante a suavidade nativa */
-#carousel-track {
-    scroll-behavior: smooth;
+#carousel-sec4 {
+  display: flex;
+  gap: 1.5rem;
+  cursor: grab;
+  will-change: transform;
+  /* Remove qualquer interferência de scroll nativo */
+  user-select: none;
+  touch-action: pan-y;
+  backface-visibility: hidden;
 }
 
-/* Classe utilitária para quando precisarmos 'teletransportar' o scroll sem animação */
-.disable-scroll-behavior {
-    scroll-behavior: auto !important;
+.carousel-item-mobile {
+  flex: 0 0 80vw;
+  max-width: 320px;
+  /* Suaviza a renderização */
+  transform: translateZ(0);
 }
 
-/* Ajuste das setas no mobile */
-@media (max-width: 768px) {
-    #carousel-prev, #carousel-next {
-        opacity: 0.8 !important;
-        padding: 0.8rem; /* Botões um pouco maiores para o dedo */
-    }
+/* === CARROSSEL 3D CORRIGIDO - SEM VAZAMENTO E SEM SUMIÇO === */
+
+.carousel-3d-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 4rem auto;
+  /* Garante que o container tenha altura no Desktop */
+  aspect-ratio: 16 / 9; 
+  min-height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* Importante para o efeito 3D no PC */
+}
+
+.carousel-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+}
+
+.carousel-3d-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.carousel-3d-slide {
+  position: absolute;
+  /* CENTRALIZAÇÃO ABSOLUTA DOS SLIDES */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; 
+  height: auto; /* Deixa o vídeo ditar a altura */
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+  opacity: 0;
+  pointer-events: none; /* Evita clicar em vídeo escondido */
+}
+
+/* --- ESTADOS DO CARROSSEL --- */
+
+.carousel-3d-slide.active {
+  transform: translate(-50%, -50%) translateZ(0) scale(1.1);
+  opacity: 1;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.carousel-3d-slide.prev {
+  transform: translate(-50%, -50%) translateX(-50%) translateZ(-250px) rotateY(35deg) scale(0.8);
+  opacity: 0.4;
+  z-index: 5;
+}
+
+.carousel-3d-slide.next {
+  transform: translate(-50%, -50%) translateX(50%) translateZ(-250px) rotateY(-35deg) scale(0.8);
+  opacity: 0.4;
+  z-index: 5;
+}
+
+/* --- AJUSTE EXCLUSIVO MOBILE (CORRIGE VAZAMENTO) --- */
+@media (max-width: 767px) {
+  .carousel-3d-container {
+    margin: 2rem auto;
+    min-height: 200px;
+    overflow: hidden; /* CORTA O VAZAMENTO PARA A DIREITA */
+  }
+
+  .carousel-3d-slide {
+    width: 85%; /* Vídeo ocupa quase toda a largura */
+  }
+
+  .carousel-3d-slide.active {
+    /* No mobile não aumentamos tanto o scale para não vazar */
+    transform: translate(-50%, -50%) scale(1); 
+  }
+
+  .carousel-3d-slide.prev {
+    transform: translate(-50%, -50%) translateX(-35%) translateZ(-150px) rotateY(20deg) scale(0.8);
+  }
+
+  .carousel-3d-slide.next {
+    transform: translate(-50%, -50%) translateX(35%) translateZ(-150px) rotateY(-20deg) scale(0.8);
+  }
+
+  .carousel-nav-btn {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color .3s, opacity .3s;
+    color: #333;
+}
+
+#prev-btn { left: 10px; }
+#next-btn { right: 10px; }
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  width: 100%;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
 }

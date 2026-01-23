@@ -103,126 +103,165 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(numerosSection);
   }
 
-  // ... (Mantenha o código do Lenis, Counter e Observer acima como estava) ...
+  const track4 = document.getElementById('carousel-sec4');
+  if (!track4) return;
 
-  // ------------------------------------------------------------------
-  // CARROSSEL INFINITO SEC-4 (Mobile)
-  // ------------------------------------------------------------------
-  const track = document.getElementById('carousel-track');
-  const btnPrev = document.getElementById('carousel-prev');
-  const btnNext = document.getElementById('carousel-next');
+  // 1. Clona os itens apenas uma vez para o loop
+  const items = Array.from(track4.children);
+  items.forEach(item => {
+    const clone = item.cloneNode(true);
+    track4.appendChild(clone);
+  });
 
-  if (track && btnPrev && btnNext) {
-    // 1. Configurações
-    const autoPlayDelay = 4500; // Tempo mais lento (4.5 segundos) entre slides
-    let autoPlayInterval;
-    let isScrolling = false;
+  let xPos = 0;
+  let isPaused = false;
+  let isDragging = false;
+  let startX = 0;
+  const speed = 0.6; // Velocidade lenta e constante
 
-    // 2. Lógica de Clonagem Infinita
-    // Clonamos os itens para criar [Original] + [Original] + [Original]
-    // Isso garante espaço suficiente para rolar sem bater na parede
-    const items = Array.from(track.children);
-    
-    // Clona 2 vezes para garantir buffer suficiente
-    items.forEach(item => {
-      const cloneEnd = item.cloneNode(true);
-      track.appendChild(cloneEnd); // Adiciona ao final
-    });
-    items.forEach(item => {
-      const cloneEnd2 = item.cloneNode(true);
-      track.appendChild(cloneEnd2); // Adiciona mais uma vez ao final
-    });
+  // Largura de um grupo de fotos (antes da clonagem)
+  // Usamos o gap + largura dos itens originais
+  const getLoopWidth = () => {
+    const gap = 24; // 1.5rem em pixels
+    return (items[0].offsetWidth * items.length) + (gap * items.length);
+  };
 
-    // Agora temos 9 itens (3 originais x 3 conjuntos). 
-    // Largura de um item + gap (assumindo gap-4 = 16px)
-    // Precisamos recalcular isso dinamicamente pois o CSS define largura em %
-    const getItemWidth = () => track.firstElementChild.offsetWidth + 16; 
+  function animate() {
+    if (!isPaused) {
+      xPos -= speed;
 
-    // 3. Função de Scroll Controlado
-    const moveCarousel = (direction) => {
-      const itemWidth = getItemWidth();
-      if (direction === 'next') {
-        track.scrollBy({ left: itemWidth, behavior: 'smooth' });
-      } else {
-        track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+      // Loop infinito sem pulo visual
+      const loopWidth = getLoopWidth();
+      if (Math.abs(xPos) >= loopWidth) {
+        xPos = 0;
       }
-    };
 
-    // 4. Reset "Invisível" do Loop
-    // Verifica se chegamos muito perto do fim ou do começo e "teletransporta"
-    const checkInfiniteLoop = () => {
-      if (isScrolling) return;
-
-      const itemWidth = getItemWidth();
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      const totalSets = 3; // Temos 3 conjuntos de itens
-      const singleSetWidth = (track.scrollWidth / totalSets); 
-
-      // Se passou de 2/3 do caminho (fim do segundo set), volta para o final do primeiro set
-      if (track.scrollLeft >= (singleSetWidth * 2) - 50) { 
-        track.classList.add('disable-scroll-behavior'); // Desliga animação
-        track.scrollLeft -= singleSetWidth; // Pula para trás instantaneamente
-        track.classList.remove('disable-scroll-behavior'); // Religa animação
-      }
-      // Se está muito no começo (tentando voltar do inicio), joga para o meio
-      else if (track.scrollLeft <= 50) {
-        track.classList.add('disable-scroll-behavior');
-        track.scrollLeft += singleSetWidth;
-        track.classList.remove('disable-scroll-behavior');
-      }
-    };
-
-    // 5. Event Listeners
-    btnNext.addEventListener('click', () => {
-      moveCarousel('next');
-      resetAutoPlay();
-    });
-
-    btnPrev.addEventListener('click', () => {
-      moveCarousel('prev');
-      resetAutoPlay();
-    });
-
-    // Detecta o fim do scroll para fazer a verificação do loop infinito
-    track.addEventListener('scroll', () => {
-      // Usamos um pequeno timeout para não sobrecarregar e checar apenas quando o movimento 'quase' parar
-      clearTimeout(isScrolling);
-      isScrolling = setTimeout(() => {
-        isScrolling = false;
-        checkInfiniteLoop();
-      }, 50); // Checa 50ms após o evento de scroll
-    });
-
-    // 6. Autoplay (Passar Devagar)
-    const startAutoPlay = () => {
-      stopAutoPlay(); // Garante que não tenha duplos
-      autoPlayInterval = setInterval(() => {
-        // Verifica se o usuário não está tocando na tela
-        if (!track.matches(':hover') && !track.matches(':active')) { 
-           moveCarousel('next');
-        }
-      }, autoPlayDelay);
-    };
-
-    const stopAutoPlay = () => clearInterval(autoPlayInterval);
-    
-    const resetAutoPlay = () => {
-      stopAutoPlay();
-      startAutoPlay();
-    };
-
-    // Inicia e gerencia interrupções (toque do usuário)
-    track.addEventListener('touchstart', stopAutoPlay, { passive: true });
-    track.addEventListener('touchend', startAutoPlay);
-    
-    // Centraliza o carrossel no "meio" (Set 2) ao carregar a página
-    // Para permitir rolagem para esquerda e direita desde o início
-    window.addEventListener('load', () => {
-        track.classList.add('disable-scroll-behavior');
-        const singleSetWidth = (track.scrollWidth / 3);
-        track.scrollLeft = singleSetWidth; // Começa no segundo set
-        track.classList.remove('disable-scroll-behavior');
-        startAutoPlay();
-    });
+      track4.style.transform = `translate3d(${xPos}px, 0, 0)`;
+    }
+    requestAnimationFrame(animate);
   }
+
+  // Iniciar
+  requestAnimationFrame(animate);
+
+  // 2. Interação Manual Suave
+  track4.addEventListener('touchstart', (e) => {
+    isPaused = true;
+    isDragging = true;
+    startX = e.touches[0].pageX - xPos;
+  }, { passive: true });
+
+  track4.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].pageX;
+    xPos = currentX - startX;
+
+    // Mantém o loop durante o arraste
+    const loopWidth = getLoopWidth();
+    if (xPos > 0) xPos = -loopWidth;
+    if (Math.abs(xPos) >= loopWidth) xPos = 0;
+
+    track4.style.transform = `translate3d(${xPos}px, 0, 0)`;
+  }, { passive: true });
+
+  track4.addEventListener('touchend', () => {
+    isDragging = false;
+    // Espera um pouco para retomar o movimento automático
+    setTimeout(() => { isPaused = false; }, 1500);
+  });
+  // --- LÓGICA DO CARROSSEL 3D ATUALIZADA (SEM DESCRIÇÕES) ---
+    const carouselContainers = document.querySelectorAll('.carousel-3d-container');
+    if (carouselContainers.length > 0) {
+        carouselContainers.forEach(container => {
+            const track = container.querySelector('.carousel-3d-track');
+            if (!track) return;
+
+            const slides = Array.from(track.children);
+            const nextButton = container.querySelector('#next-btn');
+            const prevButton = container.querySelector('#prev-btn');
+
+            if (slides.length === 0) return;
+
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            let autoplayInterval = null;
+            const AUTOPLAY_DELAY = 5000;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const swipeThreshold = 50;
+
+            const stopAutoplay = () => {
+                clearInterval(autoplayInterval);
+            };
+
+            const startAutoplay = () => {
+                stopAutoplay();
+                autoplayInterval = setInterval(goToNext, AUTOPLAY_DELAY);
+            };
+
+            const updateCarousel = () => {
+                slides.forEach(slide => slide.classList.remove('active', 'prev', 'next'));
+
+                const prevIndex = (currentIndex - 1 + slideCount) % slideCount;
+                const nextIndex = (currentIndex + 1) % slideCount;
+
+                if (slides[currentIndex]) slides[currentIndex].classList.add('active');
+                if (slides[prevIndex]) slides[prevIndex].classList.add('prev');
+                if (slides[nextIndex]) slides[nextIndex].classList.add('next');
+            };
+
+            const goToNext = () => {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateCarousel();
+            };
+
+            const goToPrev = () => {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateCarousel();
+            };
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    goToNext();
+                    startAutoplay();
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    goToPrev();
+                    startAutoplay();
+                });
+            }
+
+            container.addEventListener('mouseenter', stopAutoplay);
+            container.addEventListener('mouseleave', startAutoplay);
+
+            const handleSwipe = () => {
+                const swipeDistance = touchEndX - touchStartX;
+                if (Math.abs(swipeDistance) > swipeThreshold) {
+                    if (swipeDistance < 0) {
+                        goToNext();
+                    } else {
+                        goToPrev();
+                    }
+                }
+            };
+
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                stopAutoplay();
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].clientX;
+                handleSwipe();
+                startAutoplay();
+            });
+
+            // Inicia o carrossel
+            updateCarousel();
+            startAutoplay();
+        });
+    }
 });
