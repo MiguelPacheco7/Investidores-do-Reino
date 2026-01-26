@@ -233,35 +233,28 @@ body {
 
 /* --- AJUSTE EXCLUSIVO MOBILE (CORRIGE VAZAMENTO) --- */
 @media (max-width: 767px) {
-
-  .carousel-3d-container {
-    margin: 2rem auto;
-    min-height: 200px;
-    overflow: hidden;
-    /* CORTA O VAZAMENTO PARA A DIREITA */
-  }
-
   .carousel-3d-slide {
-    width: 85%;
-    /* Vídeo ocupa quase toda a largura */
+    /* Aumentamos de 55% para 85% para ocupar quase a tela toda */
+    width: 85% !important; 
+    height: auto;
   }
 
   .carousel-3d-slide.active {
-    /* No mobile não aumentamos tanto o scale para não vazar */
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1.05) !important; /* Um leve zoom no ativo */
+    z-index: 20;
   }
 
   .carousel-3d-slide.prev {
-    transform: translate(-50%, -50%) translateX(-35%) translateZ(-150px) rotateY(20deg) scale(0.8);
+    /* Diminuímos o afastamento lateral para não sumirem da tela */
+    transform: translate(-50%, -50%) translateX(-45%) scale(0.7) !important;
+    opacity: 0.3;
+    z-index: 10;
   }
 
   .carousel-3d-slide.next {
-    transform: translate(-50%, -50%) translateX(35%) translateZ(-150px) rotateY(-20deg) scale(0.8);
-  }
-
-  .carousel-nav-btn {
-    width: 35px;
-    height: 35px;
+    transform: translate(-50%, -50%) translateX(45%) scale(0.7) !important;
+    opacity: 0.3;
+    z-index: 10;
   }
 }
 
