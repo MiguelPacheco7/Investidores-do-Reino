@@ -403,3 +403,9 @@ body {
   transition: background-color .3s, opacity .3s;
   color: #333;
 }
+
+#prev-btn, #next-btn {
+  z-index: 999 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important; /* Garante que o clique seja registrado */
+}

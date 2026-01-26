@@ -103,195 +103,177 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(numerosSection);
   }
 
+  // --- LÓGICA DO CARROSSEL 3D ATUALIZADA (APENAS MANUAL) ---
+  const carouselContainers = document.querySelectorAll('.carousel-3d-container, .carousel-3d-container-fotos');
+
+  if (carouselContainers.length > 0) {
+    carouselContainers.forEach(container => {
+      // Correção no seletor: use querySelector para os tracks específicos de cada container
+      const track = container.querySelector('.carousel-3d-track') || container.querySelector('.carousel-3d-fotos-track');
+      if (!track) return;
+
+      const slides = Array.from(track.children);
+      // Busca os botões dentro do container atual (garanta que os IDs ou classes sejam únicos no HTML)
+      const nextButton = container.querySelector('#next-btn') || container.querySelector('#next-btn-fotos');
+      const prevButton = container.querySelector('#prev-btn') || container.querySelector('#prev-btn-fotos');
+
+      if (slides.length === 0) return;
+
+      let currentIndex = 0;
+      const slideCount = slides.length;
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const swipeThreshold = 50;
+
+      const updateCarousel = () => {
+        slides.forEach(slide => slide.classList.remove('active', 'prev', 'next'));
+
+        const prevIndex = (currentIndex - 1 + slideCount) % slideCount;
+        const nextIndex = (currentIndex + 1) % slideCount;
+
+        if (slides[currentIndex]) slides[currentIndex].classList.add('active');
+        if (slides[prevIndex]) slides[prevIndex].classList.add('prev');
+        if (slides[nextIndex]) slides[nextIndex].classList.add('next');
+      };
+
+      const goToNext = () => {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+      };
+
+      const goToPrev = () => {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateCarousel();
+      };
+
+      // Eventos de Clique
+      if (nextButton) {
+        nextButton.addEventListener('click', goToNext);
+      }
+
+      if (prevButton) {
+        prevButton.addEventListener('click', goToPrev);
+      }
+
+      // Lógica de Deslize (Swipe)
+      const handleSwipe = () => {
+        const swipeDistance = touchEndX - touchStartX;
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+          if (swipeDistance < 0) {
+            goToNext(); // Deslizou para a esquerda
+          } else {
+            goToPrev(); // Deslizou para a direita
+          }
+        }
+      };
+
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        handleSwipe();
+      }, { passive: true });
+
+      // Inicia o estado visual sem disparar o timer
+      updateCarousel();
+    });
+  }
+
   // --- LÓGICA DO CARROSSEL 3D ATUALIZADA (SEM DESCRIÇÕES) ---
-    const carouselContainers = document.querySelectorAll('.carousel-3d-container', '.carousel-3d-container-fotos');
-    if (carouselContainers.length > 0) {
-        carouselContainers.forEach(container => {
-            const track = container.querySelector('.carousel-3d-track', '.carousel-3d-fotos-track');
-            if (!track) return;
+  const carouselContainersFotos = document.querySelectorAll('.carousel-3d-container-fotos');
+  if (carouselContainersFotos.length > 0) {
+    carouselContainersFotos.forEach(container => {
+      const track = container.querySelector('.carousel-3d-fotos-track');
+      if (!track) return;
 
-            const slides = Array.from(track.children);
-            const nextButton = container.querySelector('#next-btn');
-            const prevButton = container.querySelector('#prev-btn');
+      const slides = Array.from(track.children);
+      const nextButton = container.querySelector('#next-btn');
+      const prevButton = container.querySelector('#prev-btn');
 
-            if (slides.length === 0) return;
+      if (slides.length === 0) return;
 
-            let currentIndex = 0;
-            const slideCount = slides.length;
-            let autoplayInterval = null;
-            const AUTOPLAY_DELAY = 5000;
-            let touchStartX = 0;
-            let touchEndX = 0;
-            const swipeThreshold = 50;
+      let currentIndex = 0;
+      const slideCount = slides.length;
+      let autoplayInterval = null;
+      const AUTOPLAY_DELAY = 5000;
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const swipeThreshold = 50;
 
-            const stopAutoplay = () => {
-                clearInterval(autoplayInterval);
-            };
+      const stopAutoplay = () => {
+        clearInterval(autoplayInterval);
+      };
 
-            const startAutoplay = () => {
-                stopAutoplay();
-                autoplayInterval = setInterval(goToNext, AUTOPLAY_DELAY);
-            };
+      const startAutoplay = () => {
+        stopAutoplay();
+        autoplayInterval = setInterval(goToNext, AUTOPLAY_DELAY);
+      };
 
-            const updateCarousel = () => {
-                slides.forEach(slide => slide.classList.remove('active', 'prev', 'next'));
+      const updateCarousel = () => {
+        slides.forEach(slide => slide.classList.remove('active', 'prev', 'next'));
 
-                const prevIndex = (currentIndex - 1 + slideCount) % slideCount;
-                const nextIndex = (currentIndex + 1) % slideCount;
+        const prevIndex = (currentIndex - 1 + slideCount) % slideCount;
+        const nextIndex = (currentIndex + 1) % slideCount;
 
-                if (slides[currentIndex]) slides[currentIndex].classList.add('active');
-                if (slides[prevIndex]) slides[prevIndex].classList.add('prev');
-                if (slides[nextIndex]) slides[nextIndex].classList.add('next');
-            };
+        if (slides[currentIndex]) slides[currentIndex].classList.add('active');
+        if (slides[prevIndex]) slides[prevIndex].classList.add('prev');
+        if (slides[nextIndex]) slides[nextIndex].classList.add('next');
+      };
 
-            const goToNext = () => {
-                currentIndex = (currentIndex + 1) % slideCount;
-                updateCarousel();
-            };
+      const goToNext = () => {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+      };
 
-            const goToPrev = () => {
-                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-                updateCarousel();
-            };
+      const goToPrev = () => {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateCarousel();
+      };
 
-            if (nextButton) {
-                nextButton.addEventListener('click', () => {
-                    goToNext();
-                    startAutoplay();
-                });
-            }
-
-            if (prevButton) {
-                prevButton.addEventListener('click', () => {
-                    goToPrev();
-                    startAutoplay();
-                });
-            }
-
-            container.addEventListener('mouseenter', stopAutoplay);
-            container.addEventListener('mouseleave', startAutoplay);
-
-            const handleSwipe = () => {
-                const swipeDistance = touchEndX - touchStartX;
-                if (Math.abs(swipeDistance) > swipeThreshold) {
-                    if (swipeDistance < 0) {
-                        goToNext();
-                    } else {
-                        goToPrev();
-                    }
-                }
-            };
-
-            track.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-                stopAutoplay();
-            }, { passive: true });
-
-            track.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].clientX;
-                handleSwipe();
-                startAutoplay();
-            });
-
-            // Inicia o carrossel
-            updateCarousel();
-            startAutoplay();
+      if (nextButton) {
+        nextButton.addEventListener('click', () => {
+          goToNext();
+          startAutoplay();
         });
-    }
+      }
 
-    // --- LÓGICA DO CARROSSEL 3D ATUALIZADA (SEM DESCRIÇÕES) ---
-    const carouselContainers1 = document.querySelectorAll('.carousel-3d-container-fotos');
-    if (carouselContainers1.length > 0) {
-        carouselContainers1.forEach(container => {
-            const track = container.querySelector('.carousel-3d-fotos-track');
-            if (!track) return;
-
-            const slides = Array.from(track.children);
-            const nextButton = container.querySelector('#next-btn');
-            const prevButton = container.querySelector('#prev-btn');
-
-            if (slides.length === 0) return;
-
-            let currentIndex = 0;
-            const slideCount = slides.length;
-            let autoplayInterval = null;
-            const AUTOPLAY_DELAY = 5000;
-            let touchStartX = 0;
-            let touchEndX = 0;
-            const swipeThreshold = 50;
-
-            const stopAutoplay = () => {
-                clearInterval(autoplayInterval);
-            };
-
-            const startAutoplay = () => {
-                stopAutoplay();
-                autoplayInterval = setInterval(goToNext, AUTOPLAY_DELAY);
-            };
-
-            const updateCarousel = () => {
-                slides.forEach(slide => slide.classList.remove('active', 'prev', 'next'));
-
-                const prevIndex = (currentIndex - 1 + slideCount) % slideCount;
-                const nextIndex = (currentIndex + 1) % slideCount;
-
-                if (slides[currentIndex]) slides[currentIndex].classList.add('active');
-                if (slides[prevIndex]) slides[prevIndex].classList.add('prev');
-                if (slides[nextIndex]) slides[nextIndex].classList.add('next');
-            };
-
-            const goToNext = () => {
-                currentIndex = (currentIndex + 1) % slideCount;
-                updateCarousel();
-            };
-
-            const goToPrev = () => {
-                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-                updateCarousel();
-            };
-
-            if (nextButton) {
-                nextButton.addEventListener('click', () => {
-                    goToNext();
-                    startAutoplay();
-                });
-            }
-
-            if (prevButton) {
-                prevButton.addEventListener('click', () => {
-                    goToPrev();
-                    startAutoplay();
-                });
-            }
-
-            container.addEventListener('mouseenter', stopAutoplay);
-            container.addEventListener('mouseleave', startAutoplay);
-
-            const handleSwipe = () => {
-                const swipeDistance = touchEndX - touchStartX;
-                if (Math.abs(swipeDistance) > swipeThreshold) {
-                    if (swipeDistance < 0) {
-                        goToNext();
-                    } else {
-                        goToPrev();
-                    }
-                }
-            };
-
-            track.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-                stopAutoplay();
-            }, { passive: true });
-
-            track.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].clientX;
-                handleSwipe();
-                startAutoplay();
-            });
-
-            // Inicia o carrossel
-            updateCarousel();
-            startAutoplay();
+      if (prevButton) {
+        prevButton.addEventListener('click', () => {
+          goToPrev();
+          startAutoplay();
         });
-    }
+      }
+
+      container.addEventListener('mouseenter', stopAutoplay);
+      container.addEventListener('mouseleave', startAutoplay);
+
+      const handleSwipe = () => {
+        const swipeDistance = touchEndX - touchStartX;
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+          if (swipeDistance < 0) {
+            goToNext();
+          } else {
+            goToPrev();
+          }
+        }
+      };
+
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        stopAutoplay();
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        handleSwipe();
+        startAutoplay();
+      });
+
+      // Inicia o carrossel
+      updateCarousel();
+      startAutoplay();
+    });
+  }
 });
