@@ -261,11 +261,11 @@ body {
 }
 
 #prev-btn {
-  left: 2px;
+  left: 1px;
 }
 
 #next-btn {
-  right: 2px;
+  right: 1px;
 }
 
 .carousel-nav-btn {
