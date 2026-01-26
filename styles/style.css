@@ -235,12 +235,13 @@ body {
 @media (max-width: 767px) {
   .carousel-3d-slide {
     /* Aumentamos de 55% para 85% para ocupar quase a tela toda */
-    width: 85% !important; 
+    width: 85% !important;
     height: auto;
   }
 
   .carousel-3d-slide.active {
-    transform: translate(-50%, -50%) scale(1.05) !important; /* Um leve zoom no ativo */
+    transform: translate(-50%, -50%) scale(1.05) !important;
+    /* Um leve zoom no ativo */
     z-index: 20;
   }
 
@@ -256,6 +257,15 @@ body {
     opacity: 0.3;
     z-index: 10;
   }
+
+}
+
+#prev-btn {
+  left: 2px;
+}
+
+#next-btn {
+  right: 2px;
 }
 
 .carousel-nav-btn {
@@ -275,14 +285,6 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: background-color .3s, opacity .3s;
   color: #333;
-}
-
-#prev-btn {
-  left: 10px;
-}
-
-#next-btn {
-  right: 10px;
 }
 
 .video-wrapper {
@@ -397,8 +399,10 @@ body {
   color: #333;
 }
 
-#prev-btn, #next-btn {
+#prev-btn,
+#next-btn {
   z-index: 999 !important;
   cursor: pointer !important;
-  pointer-events: auto !important; /* Garante que o clique seja registrado */
+  pointer-events: auto !important;
+  /* Garante que o clique seja registrado */
 }
