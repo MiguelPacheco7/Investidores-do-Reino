@@ -270,7 +270,6 @@ body {
   position: relative;
   width: 100%;
   max-width: 1000px;
-  margin: 2rem auto;
   /* Garante que o container tenha altura no Desktop */
   aspect-ratio: 16 / 9;
   min-height: 350px;
