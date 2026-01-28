@@ -188,9 +188,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const track = container.querySelector('.carousel-3d-fotos-track');
       if (!track) return;
 
+      // Dentro do loop: carouselContainers.forEach(container => { ...
       const slides = Array.from(track.children);
-      const nextButton = container.querySelector('[id*="next-btn"]');
-      const prevButton = container.querySelector('[id*="prev-btn"]');
+
+      // CORREÇÃO: Adicionado o ID correto para os botões de vídeo
+      const nextButton = container.querySelector('#next-btn') || container.querySelector('#next-btn-video');
+      const prevButton = container.querySelector('#prev-btn') || container.querySelector('#prev-btn-video');
 
       if (slides.length === 0) return;
 
