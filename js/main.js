@@ -104,18 +104,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- LÓGICA DO CARROSSEL 3D ATUALIZADA (APENAS MANUAL) ---
-  const carouselContainers = document.querySelectorAll('.carousel-3d-container, .carousel-3d-container-fotos');
+  const carouselContainers = document.querySelectorAll('.carousel-3d-container');
 
   if (carouselContainers.length > 0) {
     carouselContainers.forEach(container => {
       // Correção no seletor: use querySelector para os tracks específicos de cada container
-      const track = container.querySelector('.carousel-3d-track') || container.querySelector('.carousel-3d-fotos-track');
+      const track = container.querySelector('.carousel-3d-track');
       if (!track) return;
 
       const slides = Array.from(track.children);
       // Busca os botões dentro do container atual (garanta que os IDs ou classes sejam únicos no HTML)
-      const nextButton = container.querySelector('#next-btn') || container.querySelector('#next-btn-fotos');
-      const prevButton = container.querySelector('#prev-btn') || container.querySelector('#prev-btn-fotos');
+      const nextButton = container.querySelector('#next-btn-video');
+      const prevButton = container.querySelector('#prev-btn-video');
 
       if (slides.length === 0) return;
 
@@ -188,12 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const track = container.querySelector('.carousel-3d-fotos-track');
       if (!track) return;
 
-      // Dentro do loop: carouselContainers.forEach(container => { ...
       const slides = Array.from(track.children);
-
-      // CORREÇÃO: Adicionado o ID correto para os botões de vídeo
-      const nextButton = container.querySelector('#next-btn') || container.querySelector('#next-btn-video');
-      const prevButton = container.querySelector('#prev-btn') || container.querySelector('#prev-btn-video');
+      const nextButton = container.querySelector('#next-btn');
+      const prevButton = container.querySelector('#prev-btn');
 
       if (slides.length === 0) return;
 
