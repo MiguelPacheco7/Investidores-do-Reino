@@ -160,31 +160,31 @@ body {
 }
 
 
-/* ===== CARROSEL 1 FOTOS ===== */
+/* ===== CARROSEL 1 FOTOS (CORRIGIDO PARA iOS) ===== */
 
 .carousel-3d-container-fotos {
   position: relative;
   width: 100%;
   max-width: 800px;
-  /* Garante que o container tenha altura no Desktop */
   aspect-ratio: 16 / 9;
   min-height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible;
-  /* Importante para o efeito 3D no PC */
+  /* No iOS, o overflow precisa estar visível para manter o contexto 3D */
+  overflow: visible; 
 }
 
 .carousel-3d-fotos {
   min-height: 200px;
-  overflow: hidden;
-  /* CORTA O VAZAMENTO PARA A DIREITA */
+  /* REMOVIDO overflow: hidden; que quebra o 3D no Safari */
   position: relative;
   width: 100%;
   height: 100%;
+  -webkit-perspective: 1500px; /* Prefixo para iOS antigo */
   perspective: 1500px;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .carousel-3d-fotos-track {
@@ -192,37 +192,41 @@ body {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .carousel-3d-fotos-slide {
   position: absolute;
-  /* CENTRALIZAÇÃO ABSOLUTA DOS SLIDES */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 85%;
   height: auto;
-  /* Deixa o vídeo ditar a altura */
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   opacity: 0;
   pointer-events: none;
-  /* Evita clicar em vídeo escondido */
+  
+  /* ESSENCIAL PARA iOS: Força a renderização correta das faces */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* --- ESTADOS DO CARROSSEL --- */
 
 .carousel-3d-fotos-slide.active {
-  transform: translate(-50%, -50%) scale(1);
+  /* Adicionado translateZ(1px) para forçar o elemento para a frente no Safari */
+  transform: translate(-50%, -50%) translateZ(1px) scale(1);
   opacity: 1;
   z-index: 10;
   pointer-events: auto;
 }
 
 .carousel-3d-fotos-slide.prev {
+  /* Ajustado translateX para 25% no mobile se necessário, para não cortar */
   transform: translate(-50%, -50%) translateX(-35%) translateZ(-150px) rotateY(20deg) scale(0.8);
   opacity: 0.4;
   z-index: 5;
