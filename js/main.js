@@ -189,8 +189,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!track) return;
 
       const slides = Array.from(track.children);
-      const nextButton = container.querySelector('#next-btn');
-      const prevButton = container.querySelector('#prev-btn');
+      const nextButton = container.querySelector('[id*="next-btn"]');
+      const prevButton = container.querySelector('[id*="prev-btn"]');
 
       if (slides.length === 0) return;
 

@@ -257,29 +257,38 @@ body {
   color: #333;
 }
 
-#prev-btn,
+/* Posicionamento dos botões do carrossel de FOTOS */
+#prev-btn {
+  left: 10px; /* Ajustado de 1px para 10px para melhor respiro */
+}
+
 #next-btn {
-  z-index: 999 !important;
-  cursor: pointer !important;
-  pointer-events: auto !important;
-  /* Garante que o clique seja registrado */
+  right: 10px;
+}
+
+/* NOVO: Posicionamento dos botões do carrossel de VÍDEOS */
+#prev-btn-video {
+  left: 10px;
+}
+
+#next-btn-video {
+  right: 10px;
 }
 
 
 /* === CARROSSEL 3D CORRIGIDO - SEM VAZAMENTO E SEM SUMIÇO === */
 
+/* Garante que o container de vídeos também permita a visualização dos botões nas bordas */
 .carousel-3d-container {
   position: relative;
   width: 100%;
   max-width: 1000px;
-  /* Garante que o container tenha altura no Desktop */
   aspect-ratio: 16 / 9;
   min-height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible;
-  /* Importante para o efeito 3D no PC */
+  overflow: visible; /* Mantém visível os slides e botões que saem da caixa central */
 }
 
 .carousel-3d {
@@ -300,39 +309,41 @@ body {
 
 .carousel-3d-slide {
   position: absolute;
-  /* CENTRALIZAÇÃO ABSOLUTA DOS SLIDES */
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
+  left: 50%; /* Garante que o ponto de origem seja o centro do container */
+  
+  /* O translate base precisa ser EXATAMENTE -50% para compensar a largura do slide */
+  transform: translate(-50%, -50%); 
+  
+  width: 65%; /* Largura fixa no Desktop */
+  max-width: 800px;
   height: auto;
-  /* Deixa o vídeo ditar a altura */
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   opacity: 0;
   pointer-events: none;
-  /* Evita clicar em vídeo escondido */
+  z-index: 1;
 }
 
-/* --- ESTADOS DO CARROSSEL --- */
-
+/* Estado Ativo: Força a centralização total */
 .carousel-3d-slide.active {
-  transform: translate(-50%, -50%) translateZ(0) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1) !important;
   opacity: 1;
   z-index: 10;
   pointer-events: auto;
 }
 
+/* Estados Laterais: Mantém o eixo Y no centro (-50%) */
 .carousel-3d-slide.prev {
-  transform: translate(-50%, -50%) translateX(-50%) translateZ(-250px) rotateY(35deg) scale(0.8);
+  transform: translate(-85%, -50%) translateZ(-250px) rotateY(35deg) scale(0.8) !important;
   opacity: 0.4;
   z-index: 5;
 }
 
 .carousel-3d-slide.next {
-  transform: translate(-50%, -50%) translateX(50%) translateZ(-250px) rotateY(-35deg) scale(0.8);
+  transform: translate(-15%, -50%) translateZ(-250px) rotateY(-35deg) scale(0.8) !important;
   opacity: 0.4;
   z-index: 5;
 }
