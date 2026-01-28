@@ -172,7 +172,7 @@ body {
   justify-content: center;
   align-items: center;
   /* No iOS, o overflow precisa estar visível para manter o contexto 3D */
-  overflow: visible; 
+  overflow: visible;
 }
 
 .carousel-3d-fotos {
@@ -181,7 +181,8 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  -webkit-perspective: 1500px; /* Prefixo para iOS antigo */
+  -webkit-perspective: 1500px;
+  /* Prefixo para iOS antigo */
   perspective: 1500px;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
@@ -209,7 +210,7 @@ body {
   transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   opacity: 0;
   pointer-events: none;
-  
+
   /* ESSENCIAL PARA iOS: Força a renderização correta das faces */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -246,8 +247,8 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   border: none;
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -259,27 +260,21 @@ body {
 
 /* Posicionamento dos botões do carrossel de FOTOS */
 #prev-btn {
-  left: 10px; /* Ajustado de 1px para 10px para melhor respiro */
+  left: 10px;
+  /* Ajustado de 1px para 10px para melhor respiro */
 }
 
 #next-btn {
   right: 10px;
 }
 
-/* NOVO: Posicionamento dos botões do carrossel de VÍDEOS */
-#prev-btn-video {
-  left: 10px;
-}
-
-#next-btn-video {
-  right: 10px;
-}
 
 
 /* === CARROSSEL 3D CORRIGIDO - SEM VAZAMENTO E SEM SUMIÇO === */
 
 /* Garante que o container de vídeos também permita a visualização dos botões nas bordas */
 .carousel-3d-container {
+  margin: 0 auto !important;
   position: relative;
   width: 100%;
   max-width: 1000px;
@@ -288,7 +283,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible; /* Mantém visível os slides e botões que saem da caixa central */
+  overflow: visible;
+  /* Mantém visível os slides e botões que saem da caixa central */
 }
 
 .carousel-3d {
@@ -310,12 +306,14 @@ body {
 .carousel-3d-slide {
   position: absolute;
   top: 50%;
-  left: 50%; /* Garante que o ponto de origem seja o centro do container */
-  
+  left: 50%;
+  /* Garante que o ponto de origem seja o centro do container */
+
   /* O translate base precisa ser EXATAMENTE -50% para compensar a largura do slide */
-  transform: translate(-50%, -50%); 
-  
-  width: 65%; /* Largura fixa no Desktop */
+  transform: translate(-50%, -50%);
+
+  width: 65%;
+  /* Largura fixa no Desktop */
   max-width: 800px;
   height: auto;
   border-radius: 1rem;
@@ -348,6 +346,15 @@ body {
   z-index: 5;
 }
 
+/* NOVO: Posicionamento dos botões do carrossel de VÍDEOS */
+#prev-btn-video {
+  left: 1px;
+}
+
+#next-btn-video {
+  right: 1px;
+}
+
 /* --- AJUSTE EXCLUSIVO MOBILE (CORRIGE VAZAMENTO) --- */
 @media (max-width: 767px) {
   .carousel-3d-slide {
@@ -374,15 +381,6 @@ body {
     opacity: 0.3;
     z-index: 10;
   }
-
-}
-
-#prev-btn {
-  left: 1px;
-}
-
-#next-btn {
-  right: 1px;
 }
 
 .carousel-nav-btn {
